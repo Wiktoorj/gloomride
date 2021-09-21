@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GloomCovidRide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: black;
+        }
+
+        .siatka {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            z-index: -1;
+            border: 5px ridge rgba(217, 255, 0, .8);
+            border-style:
+        }
+
+        .siatka div {
+            border-left: 7px dashed rgba(217, 255, 0, .8);
+            background-color: rgba(39, 39, 35, 0.3);
+        }
+
+        .siatka div:nth-of-type(1),
+        .siatka div:nth-of-type(6),
+        .siatka div:nth-of-type(11),
+        .siatka div:nth-of-type(16),
+        .siatka div:nth-of-type(21) {
+            border-left: none;
+        }
+
+        .arrowL,
+        .arrowP {
+            height: 100vh;
+            width: 50vw;
+            position: fixed;
+            top: 0%;
+            z-index: 10;
+        }
+
+        .arrowL {
+            left: 0%;
+        }
+
+        .arrowP {
+            right: 0%;
+        }
+
+
+        .hero {
+            background-color: orange;
+            height: 10vh;
+            width: 10vw;
+            position: fixed;
+            top: 80vh;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-align: center;
+            box-shadow: 0 0 10px 15px yellow;
+            z-index: 3;
+            animation: heroGloom 1s infinite linear;
+        }
+
+        @keyframes heroGloom {
+            25% {
+                box-shadow: 0 0 0 0;
+            }
+
+            50% {
+                box-shadow: 0 0 10px 15px yellow;
+            }
+
+            75% {
+                box-shadow: 0 0 0 0;
+            }
+
+            100% {
+                box-shadow: 0 0 10px 15px yellow;
+            }
+        }
+
+        .start,
+        .koniec {
+            height: 300vh;
+            position: relative;
+        }
+
+        .startbtn {
+            height: 40vh;
+            width: 75vw;
+            position: absolute;
+            background-color: rgba(0, 0, 0, .7);
+            box-shadow: 0 0 20px 20px yellow;
+            left: 50%;
+            top: 10%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 3rem;
+            z-index: 11;
+            color: white;
+            /* border: 9px solid white; */
+        }
+
+        .jeden,
+        .dwa {
+            height: 5000px;
+            position: relative;
+            /* background-color: rgba(255, 255, 255, .5); */
+        }
+
+        .object {
+            position: absolute;
+            height: 25vh;
+            width: 10vw;
+            transform: translateX(-50%);
+            background-color: red;
+            z-index: 1;
+            animation: objectGloom .2s infinite linear;
+        }
+
+        @keyframes objectGloom {
+            25% {
+                box-shadow: 0 0 0 0;
+                background-color: rgb(187, 255, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 10px 15px yellow;
+            }
+
+            75% {
+                box-shadow: 0 0 0 0;
+                background-color: rgb(187, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 10px 15px yellow;
+            }
+        }
+
+
+        .object:nth-child(1) {
+            top: 5%;
+            left: 30%;
+        }
+
+        .object:nth-child(2) {
+            top: 5%;
+            left: 70%;
+        }
+
+        .object:nth-child(3) {
+            top: 10%;
+            left: 10%;
+        }
+
+        .object:nth-child(4) {
+            top: 15%;
+            left: 30%;
+        }
+
+        .object:nth-child(5) {
+            top: 20%;
+            left: 50%;
+        }
+
+        .object:nth-child(6) {
+            top: 30%;
+            left: 30%;
+        }
+
+        .object:nth-child(7) {
+            top: 35%;
+            left: 10%;
+        }
+
+        .object:nth-child(8) {
+            top: 40%;
+            left: 50%;
+        }
+
+        .object:nth-child(9) {
+            top: 45%;
+            left: 30%;
+        }
+
+        .object:nth-child(10) {
+            top: 50%;
+            left: 50%;
+        }
+
+        .object:nth-child(11) {
+            top: 55%;
+            left: 70%;
+        }
+
+        .object:nth-child(12) {
+            top: 60%;
+            left: 90%;
+        }
+
+        .object:nth-child(13) {
+            top: 65%;
+            left: 30%;
+        }
+
+        .object:nth-child(14) {
+            top: 70%;
+            left: 70%;
+        }
+
+        .object:nth-child(15) {
+            top: 75%;
+            left: 50%;
+        }
+
+        .object:nth-child(16) {
+            top: 80%;
+            left: 90%;
+        }
+
+        .object:nth-child(17) {
+            top: 85%;
+            left: 10%;
+        }
+
+        .object:nth-child(18) {
+            top: 90%;
+            left: 70%;
+        }
+
+        .object:nth-child(19) {
+            top: 95%;
+            left: 50%;
+        }
+
+        .object:nth-child(20) {
+            top: 98%;
+            left: 10%;
+        }
+    </style>
+</head>
+<!-- siatka grid 5 x 5
+ramka elementy
+scroll w dol - animacja do bottom dlugiego scrolla
+strzalki na zmiane popzycji kwadratu
+przeszkody co jakis czas
+--pasek postepu
+postać
+nazwa
+///
+++odleglosc top od gory - przeszkoda
+od dolu do gory : przeszkody od gory a start przenosi nas instant na dol 
+gdy meta na gorze
+pouszanie divem palcem / myszka
+kontakt?
+pozycja hero wzgledem okna przegladarki dla div i przeszkody
+przeszkody top w chuj i left-prawo
+ograniczenie dla sztywnego poruszania sie (2 tryb)
+
+start gry? -->
+
+
+<body>
+
+    <div class="arrowL"></div>
+    <div class="arrowP"></div>
+    <div class="hero"></div>
+    <section class="siatka">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+    <section class="start">
+        <div class="startbtn">START</div>
+    </section>
+    <section class="jeden">
+        <div class="object">1</div>
+        <div class="object">2</div>
+        <div class="object">3</div>
+        <div class="object">4</div>
+        <div class="object">5</div>
+        <div class="object">6</div>
+        <div class="object">7</div>
+        <div class="object">8</div>
+        <div class="object">9</div>
+        <div class="object">10</div>
+        <div class="object">11</div>
+        <div class="object">12</div>
+        <div class="object">13</div>
+        <div class="object">14</div>
+        <div class="object">15</div>
+        <div class="object">16</div>
+        <div class="object">17</div>
+        <div class="object">18</div>
+        <div class="object">19</div>
+        <div class="object">20</div>
+    </section>
+    <section class="dwa">
+        <div class="object">1</div>
+        <div class="object">2</div>
+        <div class="object">3</div>
+        <div class="object">4</div>
+        <div class="object">5</div>
+        <div class="object">6</div>
+        <div class="object">7</div>
+        <div class="object">8</div>
+        <div class="object">9</div>
+        <div class="object">10</div>
+        <div class="object">11</div>
+        <div class="object">12</div>
+        <div class="object">13</div>
+        <div class="object">14</div>
+        <div class="object">15</div>
+        <div class="object">16</div>
+        <div class="object">17</div>
+        <div class="object">18</div>
+        <div class="object">19</div>
+        <div class="object">20</div>
+    </section>
+    <section class="koniec"></section>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        alert(
+            'Jeszcze dużo do napisania na potem ale coś już mam :D\n\nSTEROWANIE (PC): \nstart - strzalka w dol \nruch bohaterem - strzalka prawo/lewo\n\nSTEROWANIE (mobile):\nstart - wcisnij przycisk START \nruch bohaterem - nacisnij obszar po lewej stronie ekranu by ruszyc sie w lewo lub obszar po prawej stronie ekranu by ruszyc sie w prawo'
+        );
+
+        let move = 50
+        //strzalki dla mobile 
+        const arrowLeft = document.querySelector('.arrowL');
+        const arrowRight = document.querySelector('.arrowP');
+        //przycisk start dla mobile
+        const startBtn = document.querySelector('.startbtn');
+
+        const arrowLeftAction = () => {
+            hero.style.left = `${move > 10 ? move -= 20 : move}%`;
+        }
+
+        const arrowRightAction = () => {
+            hero.style.left = `${move < 90 ? move += 20 : move}%`;
+        }
+
+        const startGame = () => {
+            $('body, html').animate({
+                scrollTop: '500000px'
+            }, 1);
+
+            $('body, html').animate({
+                scrollTop: '0px'
+            }, 20000, "linear");
+
+            startBtn.textContent = 'Narazie KONIEC'
+        }
+
+        arrowLeft.addEventListener('click', arrowLeftAction)
+        arrowRight.addEventListener('click', arrowRightAction)
+        startBtn.addEventListener('click', startGame)
+
+
+
+        //ruch postaci
+
+        const hero = document.querySelector('.hero');
+        hero.style.left = move + '%';
+        const heroMove = (e) => {
+            switch (e.keyCode) {
+                case 37:
+                    hero.style.left = `${move > 10 ? move -= 20 : move }%`;
+                    break;
+
+                case 39:
+                    hero.style.left = `${move < 90 ? move += 20 : move }%`;
+                    break;
+
+                case 40:
+                    $('body, html').animate({
+                        scrollTop: '500000px'
+                    }, 1)
+                    $('body, html').animate({
+                        scrollTop: '0px'
+                    }, 20000, "linear")
+
+                    startBtn.textContent = 'Narazie KONIEC'
+                    break;
+            }
+        }
+        window.addEventListener('keydown', heroMove);
+
+        //kolizja z przeszkoda
+    </script>
+</body>
+
+</html>
